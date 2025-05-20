@@ -1,17 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import ThemeHandler from "../Utilities/ThemeHandler";
 import { NavLink } from "react-router";
 import webLogo from "../assets/—Pngtree—green sprout leaf logo design_7431531.png";
 import Avatar from "./Avatar";
+import AuthContext from "../Context/AuthContext";
 
 const NavBar = () => {
   const privateLinks = (
     <>
       <li>
-        <NavLink>ShareGardenTips</NavLink>
+        <NavLink to="/shareGardenTips">ShareGardenTips</NavLink>
       </li>
       <li>
-        <NavLink>MyTips</NavLink>
+        <NavLink to="/myTips">MyTips</NavLink>
       </li>
     </>
   );
@@ -21,10 +22,10 @@ const NavBar = () => {
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink>ExploreGardeners</NavLink>
+        <NavLink to="/exploreGardeners">ExploreGardeners</NavLink>
       </li>
       <li>
-        <NavLink>BrowseTips</NavLink>
+        <NavLink to="/browseTips">BrowseTips</NavLink>
       </li>
       {privateLinks}
     </>
