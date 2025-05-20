@@ -18,7 +18,7 @@ const Avatar = () => {
         </div>
       </div>
       {open && (
-        <ul className="menu menu-sm dropdown-content mt-2 p-2 shadow bg-base-100 rounded-box w-52 absolute right-0 z-50">
+        <ul className="menu menu-sm dropdown-content mt-2 p-2 shadow backGround rounded-box w-52 absolute right-0 z-50">
           <li>
             <a>Logout</a>
           </li>

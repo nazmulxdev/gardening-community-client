@@ -18,7 +18,7 @@ const NavBar = () => {
   const links = (
     <>
       <li>
-        <NavLink>Home</NavLink>
+        <NavLink to="/">Home</NavLink>
       </li>
       <li>
         <NavLink>ExploreGardeners</NavLink>
@@ -31,8 +31,12 @@ const NavBar = () => {
   );
   const loginsButton = (
     <div className="flex space-x-2">
-      <NavLink className="btn my-btn">Login</NavLink>
-      <NavLink className="btn my-btn">Signup</NavLink>
+      <NavLink to="/login" className="btn my-btn">
+        Login
+      </NavLink>
+      <NavLink to="/register" className="btn my-btn">
+        Signup
+      </NavLink>
     </div>
   );
   return (
@@ -65,8 +69,8 @@ const NavBar = () => {
             </ul>
           </div>
           <div className="flex justify-center items-center">
-            <img className="w-12" src={webLogo} alt="webLogo" />
-            <p className="font-bold hidden md:block">
+            <img className="w-16" src={webLogo} alt="webLogo" />
+            <p className="font-bold hidden md:block text-2xl">
               <span className="text-green-500">Green</span>Circle
             </p>
           </div>
