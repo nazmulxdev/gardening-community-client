@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import { createBrowserRouter } from "react-router";
 import Root from "../Layout/Root";
-import ThemeHandler from "../Utilities/ThemeHandler";
+import Home from "../Pages/Home";
 
 const Router = createBrowserRouter([
   {
@@ -10,7 +10,7 @@ const Router = createBrowserRouter([
     children: [
       {
         index: true,
-        Component: ThemeHandler,
+        Component: Home,
       },
     ],
   },

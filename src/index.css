@@ -3,3 +3,40 @@
 @plugin "daisyui" {
   themes: light --default, dark --prefersdark;
 }
+
+/* @plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: #22c55e;
+  --color-secondary: teal;
+  --btn-color: var(--color-[#22c55e]);
+  name: "dark";
+  --color-primary: #22c55e;
+  --btn-color: var(--color-[#22c55e]);
+} */
+
+[data-theme="light"] {
+  .my-btn {
+    background-color: #05a540;
+    color: white;
+  }
+  .primaryColor {
+    color: #05a540;
+  }
+  .backGround {
+    background-color: #05a540;
+  }
+}
+
+[data-theme="dark"] {
+  .my-btn {
+    background-color: #05a540;
+    color: white;
+  }
+  .primaryColor {
+    color: #05a540;
+  }
+  .backGround {
+    background-color: #05a540;
+  }
+}

@@ -31,7 +31,7 @@ const ThemeHandler = () => {
           <span className="text-sm font-medium">Dark</span>
         </FaRegSun>
 
-        <FaMoon className="text-blue-500">
+        <FaMoon style={{ color: "green" }} className="text-blue-500">
           <span className="text-sm font-medium">Light</span>
         </FaMoon>
       </label>
