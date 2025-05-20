@@ -24,7 +24,7 @@
     color: #05a540;
   }
   .backGround {
-    background-color: #05a540;
+    background-color: #f5f5f4;
   }
 }
 
@@ -37,6 +37,10 @@
     color: #05a540;
   }
   .backGround {
-    background-color: #05a540;
+    background-color: #1f2937;
   }
+}
+
+.active {
+  color: #05a540;
 }
