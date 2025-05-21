@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
 import ThemeHandler from "../Utilities/ThemeHandler";
-import { NavLink } from "react-router";
+import { NavLink, useLocation } from "react-router";
 import webLogo from "../assets/—Pngtree—green sprout leaf logo design_7431531.png";
 import Avatar from "./Avatar";
 import AuthContext from "../Context/AuthContext";
 
 const NavBar = () => {
+  const { presentUser } = useContext(AuthContext);
+  const location = useLocation();
   const privateLinks = (
     <>
       <li>
@@ -27,15 +29,15 @@ const NavBar = () => {
       <li>
         <NavLink to="/browseTips">BrowseTips</NavLink>
       </li>
-      {privateLinks}
+      {presentUser ? privateLinks : ""}
     </>
   );
   const loginsButton = (
     <div className="flex space-x-2">
-      <NavLink to="/login" className="btn my-btn">
+      <NavLink state={location.state} to="/login" className="btn my-btn">
         Login
       </NavLink>
-      <NavLink to="/register" className="btn my-btn">
+      <NavLink state={location.state} to="/register" className="btn my-btn">
         Register
       </NavLink>
     </div>
@@ -64,7 +66,7 @@ const NavBar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content backGround rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               {links}
             </ul>
@@ -80,8 +82,8 @@ const NavBar = () => {
           <ul className="menu menu-horizontal px-1 font-bold">{links}</ul>
         </div>
         <div className="navbar-end">
-          {loginsButton}
-          <Avatar></Avatar>
+          {presentUser ? <Avatar></Avatar> : loginsButton}
+
           <ThemeHandler></ThemeHandler>
         </div>
       </div>

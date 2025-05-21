@@ -17,13 +17,18 @@ const LogIn = () => {
     const password = e.target.password.value;
     console.log(email, password);
 
-    loggedInUser(email, password).then((result) => {
-      const user = result.user;
-      const textMessage = "You have successfully logged in";
-      setPresentUser(user);
-      successMessage(textMessage);
-      navigate(`${location.state ? location.state : "/"}`);
-    });
+    loggedInUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        const textMessage = "You have successfully logged in";
+        setPresentUser(user);
+        successMessage(textMessage);
+        navigate(`${location.state ? location.state : "/"}`);
+      })
+      .catch((error) => {
+        const errorText = error.message;
+        errorMessage(errorText);
+      });
   };
 
   const handleGoogleLogIn = () => {

@@ -30,10 +30,12 @@ const Register = () => {
         const user = userCredential.user;
         console.log(user);
         updateUser(profile).then(() => {
-          setPresentUser(auth.currentUser);
           const textMessage = "You have SuccessFully Register";
-          successMessage(textMessage);
-          navigate(`${location.state ? location.state : "/"}`);
+          successMessage(textMessage).then(() => {
+            setPresentUser(auth.currentUser);
+
+            navigate(`${location.state ? location.state : "/"}`);
+          });
         });
       })
       .catch((error) => {

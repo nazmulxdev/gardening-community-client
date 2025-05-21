@@ -8,6 +8,7 @@ import ExploreGardeners from "../Pages/ExploreGardeners";
 import BrowseTips from "../Pages/BrowseTips";
 import ShareGardenTips from "../Pages/ShareGardenTips";
 import MyTips from "../Pages/MyTips";
+import PrivateRoute from "../Private/PrivateRoute";
 
 const Router = createBrowserRouter([
   {
@@ -28,11 +29,19 @@ const Router = createBrowserRouter([
       },
       {
         path: "/shareGardenTips",
-        Component: ShareGardenTips,
+        element: (
+          <PrivateRoute>
+            <ShareGardenTips></ShareGardenTips>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/myTips",
-        Component: MyTips,
+        element: (
+          <PrivateRoute>
+            <MyTips></MyTips>
+          </PrivateRoute>
+        ),
       },
     ],
   },
