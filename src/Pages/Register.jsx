@@ -1,11 +1,17 @@
 import React, { useContext } from "react";
 import NavBar from "../Components/NavBar";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import AuthContext from "../Context/AuthContext";
-import { errorMessage } from "../Utilities/sweetAlerts";
+import { errorMessage, successMessage } from "../Utilities/sweetAlerts";
+import { auth } from "../Utilities/firebase.config";
 
 const Register = () => {
-  const { registerUser } = useContext(AuthContext);
+  const { registerUser, updateUser, setPresentUser } = useContext(AuthContext);
+
+  const location = useLocation();
+
+  const navigate = useNavigate();
+
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -14,10 +20,20 @@ const Register = () => {
       formData.entries()
     );
     console.log(name, photoUrl, email, password);
+    const profile = {
+      displayName: name,
+      photoURL: photoUrl,
+    };
     registerUser(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
+        updateUser(profile).then(() => {
+          setPresentUser(auth.currentUser);
+          const textMessage = "You have SuccessFully Register";
+          successMessage(textMessage);
+          navigate(`${location.state ? location.state : "/"}`);
+        });
       })
       .catch((error) => {
         const errorText = error.message;

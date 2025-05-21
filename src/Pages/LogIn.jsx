@@ -1,8 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
 import NavBar from "../Components/NavBar";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
+import AuthContext from "../Context/AuthContext";
+import { successMessage } from "../Utilities/sweetAlerts";
 
 const LogIn = () => {
+  const { loggedInUser, setPresentUser } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  console.log(location.state);
+  const handleLogIn = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    console.log(email, password);
+
+    loggedInUser(email, password).then((result) => {
+      const user = result.user;
+      const textMessage = "You have successfully logged in";
+      setPresentUser(user);
+      successMessage(textMessage);
+      navigate(`${location.state ? location.state : "/"}`);
+    });
+  };
   return (
     <div>
       <NavBar></NavBar>
@@ -10,12 +30,18 @@ const LogIn = () => {
       <div className="max-w-lg mx-auto card backGround w-full shrink-0 shadow-2xl mt-16">
         <div className="card-body">
           <h1 className="text-4xl font-bold text-center">Login now!</h1>
-          <fieldset className="fieldset space-y-1">
+          <form onSubmit={handleLogIn} className="fieldset space-y-1">
             <label className="label text-lg font-medium">Email</label>
-            <input type="email" className="input w-full" placeholder="Email" />
+            <input
+              type="email"
+              name="email"
+              className="input w-full"
+              placeholder="Email"
+            />
             <label className="label text-lg font-medium">Password</label>
             <input
               type="password"
+              name="password"
               className="input w-full"
               placeholder="Password"
             />
@@ -27,8 +53,10 @@ const LogIn = () => {
                 Forgot password?
               </Link>
             </div>
-            <button className="btn my-btn mt-4">Login</button>
-          </fieldset>
+            <button type="submit" className="btn my-btn mt-4">
+              Login
+            </button>
+          </form>
           <div className="flex items-center w-full my-4">
             <hr className="w-full border-t-2 border-[#05a540] my-4" />
             <p className="px-3 ">OR</p>
