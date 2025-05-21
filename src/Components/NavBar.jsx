@@ -72,8 +72,8 @@ const NavBar = () => {
             </ul>
           </div>
           <div className="flex justify-center items-center">
-            <img className="w-16" src={webLogo} alt="webLogo" />
-            <p className="font-bold hidden md:block text-2xl">
+            <img className="w-16 lg:w-20" src={webLogo} alt="webLogo" />
+            <p className="font-bold hidden md:block">
               <span className="text-green-500">Green</span>Circle
             </p>
           </div>
@@ -81,7 +81,7 @@ const NavBar = () => {
         <div className="navbar-center hidden md:flex">
           <ul className="menu menu-horizontal px-1 font-bold">{links}</ul>
         </div>
-        <div className="navbar-end">
+        <div className="navbar-end space-x-2">
           {presentUser ? <Avatar></Avatar> : loginsButton}
 
           <ThemeHandler></ThemeHandler>
