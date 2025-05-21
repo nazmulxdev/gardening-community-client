@@ -2,13 +2,15 @@ import React, { useContext } from "react";
 import NavBar from "../Components/NavBar";
 import { Link, useLocation, useNavigate } from "react-router";
 import AuthContext from "../Context/AuthContext";
-import { successMessage } from "../Utilities/sweetAlerts";
+import { errorMessage, successMessage } from "../Utilities/sweetAlerts";
 
 const LogIn = () => {
-  const { loggedInUser, setPresentUser } = useContext(AuthContext);
+  const { loggedInUser, setPresentUser, signInGoogle } =
+    useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
   console.log(location.state);
+
   const handleLogIn = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -23,6 +25,22 @@ const LogIn = () => {
       navigate(`${location.state ? location.state : "/"}`);
     });
   };
+
+  const handleGoogleLogIn = () => {
+    signInGoogle()
+      .then((result) => {
+        const user = result.user;
+        const textMessage = "You have successfully logged in";
+        setPresentUser(user);
+        successMessage(textMessage);
+        navigate(`${location.state ? location.state : "/"}`);
+      })
+      .catch((error) => {
+        const errorText = error.message;
+        errorMessage(errorText);
+      });
+  };
+
   return (
     <div>
       <NavBar></NavBar>
@@ -64,6 +82,7 @@ const LogIn = () => {
           </div>
           <div className="space-y-4">
             <button
+              onClick={handleGoogleLogIn}
               aria-label="Login with Google"
               type="button"
               className="flex items-center justify-center w-full p-4 space-x-4 rounded-md focus:ring-2 focus:ring-offset-1 hover:bg-[#05a540] text-[#05a540] border-2 border-[#05a540] bg-white  hover:border hover:text-white hover:cursor-pointer"

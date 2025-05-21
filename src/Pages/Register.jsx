@@ -6,7 +6,8 @@ import { errorMessage, successMessage } from "../Utilities/sweetAlerts";
 import { auth } from "../Utilities/firebase.config";
 
 const Register = () => {
-  const { registerUser, updateUser, setPresentUser } = useContext(AuthContext);
+  const { registerUser, updateUser, setPresentUser, signInGoogle } =
+    useContext(AuthContext);
 
   const location = useLocation();
 
@@ -40,6 +41,21 @@ const Register = () => {
         errorMessage(errorText);
       });
   };
+  const handleGoogleLogIn = () => {
+    signInGoogle()
+      .then((result) => {
+        const user = result.user;
+        const textMessage = "You have successfully logged in";
+        setPresentUser(user);
+        successMessage(textMessage);
+        navigate(`${location.state ? location.state : "/"}`);
+      })
+      .catch((error) => {
+        const errorText = error.message;
+        errorMessage(errorText);
+      });
+  };
+
   return (
     <div>
       <NavBar></NavBar>
@@ -50,6 +66,7 @@ const Register = () => {
             <label className="label text-lg font-medium">Name</label>
             <input
               type="text"
+              required
               name="name"
               className="input w-full"
               placeholder="Your Name"
@@ -57,6 +74,7 @@ const Register = () => {
             <label className="label text-lg font-medium">PhotoURL</label>
             <input
               type="text"
+              required
               name="photoUrl"
               className="input w-full"
               placeholder="Your PhotoURL"
@@ -65,6 +83,7 @@ const Register = () => {
             <input
               type="email"
               name="email"
+              required
               className="input w-full"
               placeholder="Email"
             />
@@ -100,6 +119,7 @@ const Register = () => {
           </div>
           <div className="space-y-4">
             <button
+              onClick={handleGoogleLogIn}
               aria-label="Login with Google"
               type="button"
               className="flex items-center justify-center w-full p-4 space-x-4 rounded-md focus:ring-2 focus:ring-offset-1 hover:bg-[#05a540] text-[#05a540] border-2 border-[#05a540] bg-white  hover:border hover:text-white hover:cursor-pointer"
