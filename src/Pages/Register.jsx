@@ -14,7 +14,7 @@ const Register = () => {
             <hr className="w-full border-t-2 border-[#05a540] my-4" />
             <hr className="w-full border-t-2 border-[#05a540] my-4" />
           </div> */}
-          <fieldset className="fieldset space-y-1">
+          <form className="fieldset space-y-1">
             <label className="label text-lg font-medium">Name</label>
             <input
               type="text"
@@ -29,14 +29,30 @@ const Register = () => {
             />
             <label className="label text-lg font-medium">Email</label>
             <input type="email" className="input w-full" placeholder="Email" />
-            <label className="label text-lg font-medium">Password</label>
-            <input
-              type="password"
-              className="input w-full"
-              placeholder="Password"
-            />
-            <button className="btn my-btn mt-4">Login</button>
-          </fieldset>
+            <label className="validator">
+              <p className="label text-lg font-medium">Password</p>
+              <input
+                type="password"
+                required
+                placeholder="Your password"
+                minLength="8"
+                pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}"
+                title="The password should be at least 8 characters and including one uppercase,one lowercase letter and a special character "
+                className="input w-full"
+              />
+            </label>
+
+            <p className="validator-hint hidden">
+              The password should be at least 8 characters, including
+              <br />
+              At least one uppercase letter <br />
+              At least one lowercase letter <br />
+              At least one special character
+            </p>
+            <button type="submit" className="btn my-btn mt-4">
+              Register
+            </button>
+          </form>
           <div className="flex items-center w-full my-4">
             <hr className="w-full border-t-2 border-[#05a540] my-4" />
             <p className="px-3 ">OR</p>
