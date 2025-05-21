@@ -9,6 +9,7 @@ import BrowseTips from "../Pages/BrowseTips";
 import ShareGardenTips from "../Pages/ShareGardenTips";
 import MyTips from "../Pages/MyTips";
 import PrivateRoute from "../Private/PrivateRoute";
+import LoadingSpinner from "../Utilities/LoadingSpinner";
 
 const Router = createBrowserRouter([
   {
@@ -22,6 +23,8 @@ const Router = createBrowserRouter([
       {
         path: "/exploreGardeners",
         Component: ExploreGardeners,
+        loader: () => fetch("http://localhost:3000/gardenersData"),
+        hydrateFallbackElement: <LoadingSpinner></LoadingSpinner>,
       },
       {
         path: "/browseTips",

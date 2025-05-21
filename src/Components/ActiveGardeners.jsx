@@ -12,8 +12,8 @@ const ActiveGardeners = () => {
   }, []);
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center justify-center gap-2 sm:gap-4 mb-10">
-      {activeGardeners.map((gardener) => (
-        <FeatureGardeners gardener={gardener}></FeatureGardeners>
+      {activeGardeners.map((gardener, index) => (
+        <FeatureGardeners key={index} gardener={gardener}></FeatureGardeners>
       ))}
     </div>
   );
