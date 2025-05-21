@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import AuthContext from "../Context/AuthContext";
+import { successMessage } from "../Utilities/sweetAlerts";
 
 const ShareGardenTips = () => {
   const { presentUser } = useContext(AuthContext);
@@ -11,6 +12,20 @@ const ShareGardenTips = () => {
     const gardenTip = Object.fromEntries(formData.entries());
     const tipDetails = { ...gardenTip, totalLiked: 0 };
     console.log(tipDetails);
+    fetch("http://localhost:3000/gardenersTips", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(tipDetails),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          e.target.reset();
+          successMessage("Your have shared your garden tips successfully");
+        }
+      });
   };
   return (
     <div className="max-w-screen-2xl mx-auto">
@@ -109,6 +124,7 @@ const ShareGardenTips = () => {
               className="input w-full"
               name="name"
               value={presentUser.displayName}
+              readOnly
               placeholder="Enter your name"
             />
           </fieldset>
@@ -119,6 +135,7 @@ const ShareGardenTips = () => {
               className="input w-full"
               name="email"
               value={presentUser.email}
+              readOnly
               placeholder="Enter your email"
             />
           </fieldset>
