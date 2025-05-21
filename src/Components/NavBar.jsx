@@ -36,7 +36,7 @@ const NavBar = () => {
         Login
       </NavLink>
       <NavLink to="/register" className="btn my-btn">
-        Signup
+        Register
       </NavLink>
     </div>
   );

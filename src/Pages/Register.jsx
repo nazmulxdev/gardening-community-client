@@ -1,38 +1,62 @@
-import React from "react";
+import React, { useContext } from "react";
 import NavBar from "../Components/NavBar";
 import { Link } from "react-router";
+import AuthContext from "../Context/AuthContext";
+import { errorMessage } from "../Utilities/sweetAlerts";
 
 const Register = () => {
+  const { registerUser } = useContext(AuthContext);
+  const handleRegister = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    const { name, photoUrl, email, password } = Object.fromEntries(
+      formData.entries()
+    );
+    console.log(name, photoUrl, email, password);
+    registerUser(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        const errorText = error.message;
+        errorMessage(errorText);
+      });
+  };
   return (
     <div>
       <NavBar></NavBar>
-
       <div className="max-w-lg mx-auto card backGround w-full shrink-0 shadow-2xl mt-16">
         <div className="card-body">
           <h1 className="text-4xl font-bold text-center">Register Now!</h1>
-          {/* <div className="flex items-center w-full my-4">
-            <hr className="w-full border-t-2 border-[#05a540] my-4" />
-            <hr className="w-full border-t-2 border-[#05a540] my-4" />
-          </div> */}
-          <form className="fieldset space-y-1">
+          <form onSubmit={handleRegister} className="fieldset space-y-1">
             <label className="label text-lg font-medium">Name</label>
             <input
               type="text"
+              name="name"
               className="input w-full"
               placeholder="Your Name"
             />
             <label className="label text-lg font-medium">PhotoURL</label>
             <input
               type="text"
+              name="photoUrl"
               className="input w-full"
               placeholder="Your PhotoURL"
             />
             <label className="label text-lg font-medium">Email</label>
-            <input type="email" className="input w-full" placeholder="Email" />
+            <input
+              type="email"
+              name="email"
+              className="input w-full"
+              placeholder="Email"
+            />
             <label className="validator">
               <p className="label text-lg font-medium">Password</p>
               <input
                 type="password"
+                name="password"
                 required
                 placeholder="Your password"
                 minLength="8"
