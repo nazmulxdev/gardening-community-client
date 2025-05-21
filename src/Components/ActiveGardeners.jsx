@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import FeatureGardeners from "./FeatureGardeners";
 
 const ActiveGardeners = () => {
   const [activeGardeners, setActiveGardeners] = useState([]);
@@ -9,11 +10,11 @@ const ActiveGardeners = () => {
         setActiveGardeners(data);
       });
   }, []);
-
-  console.log(activeGardeners);
   return (
-    <div>
-      <p>this is all active gardeners</p>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center justify-center gap-2 sm:gap-4 mb-10">
+      {activeGardeners.map((gardener) => (
+        <FeatureGardeners gardener={gardener}></FeatureGardeners>
+      ))}
     </div>
   );
 };
