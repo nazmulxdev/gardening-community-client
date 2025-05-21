@@ -1,19 +1,22 @@
-import React, { use, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Zoom } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import { Typewriter } from "react-simple-typewriter";
 
-const eventPromise = fetch("http://localhost:3000/eventCollection").then(
-  (res) => res.json()
-);
-
 const SwiperSliderCarousel = () => {
-  const eventSlides = use(eventPromise);
+  const [eventSlides, setEventSlides] = useState([]);
   console.log(eventSlides);
   const [activeSlide, setActiveSlide] = useState(0);
 
+  useEffect(() => {
+    fetch("http://localhost:3000/eventCollection")
+      .then((res) => res.json())
+      .then((data) => setEventSlides(data));
+  }, []);
+  console.log(eventSlides);
+
   return (
-    <div className="w-full mx-auto my-6 rounded-xl overflow-hidden max-w-screen">
+    <div className="w-full mx-auto my-6 rounded-xl overflow-hidden max-w-screen backGround pb-4">
       <Zoom
         scale={1.2}
         indicators={true}
