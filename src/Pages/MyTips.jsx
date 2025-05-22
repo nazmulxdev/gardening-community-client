@@ -4,7 +4,7 @@ import { Tooltip } from "react-tooltip";
 import LoadingSpinner from "../Utilities/LoadingSpinner";
 import AuthContext from "../Context/AuthContext";
 import { MdDelete } from "react-icons/md";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { successMessage } from "../Utilities/sweetAlerts";
 
@@ -127,14 +127,15 @@ const MyTips = () => {
                     <td>{tip.difficultyLevel}</td>
                     <th className=" grid grid-cols-2 items-center justify-center">
                       <div>
-                        <a
+                        <Link
+                          to={`/updateSharedTip/${tip._id}`}
                           data-tooltip-id="edit"
                           data-tooltip-content="Update Tip"
                         >
                           <button className="btn my-btn btn-xs">
                             <FaEdit></FaEdit>
                           </button>
-                        </a>
+                        </Link>
                         <Tooltip
                           id="edit"
                           className="backGround primaryColor"

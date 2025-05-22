@@ -11,6 +11,7 @@ import MyTips from "../Pages/MyTips";
 import PrivateRoute from "../Private/PrivateRoute";
 import LoadingSpinner from "../Utilities/LoadingSpinner";
 import TipDetails from "../Pages/TipDetails";
+import UpdateTip from "../Pages/UpdateTip";
 
 const Router = createBrowserRouter([
   {
@@ -41,6 +42,14 @@ const Router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:3000/tipsDetails/${params.id}`),
         hydrateFallbackElement: <LoadingSpinner></LoadingSpinner>,
+      },
+      {
+        path: "/updateSharedTip/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateTip></UpdateTip>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/shareGardenTips",
