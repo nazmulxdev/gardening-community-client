@@ -48,6 +48,7 @@ const BrowseTips = () => {
               <th>No.</th>
               <th>Title</th>
               <th>Category</th>
+              <th>Availability</th>
               <th>Difficulty</th>
               <th>Details</th>
             </tr>
@@ -55,7 +56,7 @@ const BrowseTips = () => {
           {loading ? (
             <tbody>
               <tr>
-                <td colspan="5" className="mx-auto">
+                <td colSpan="6" className="mx-auto">
                   <LoadingSpinner></LoadingSpinner>
                 </td>
               </tr>
@@ -81,6 +82,7 @@ const BrowseTips = () => {
                     </div>
                   </td>
                   <td>{tip.category}</td>
+                  <td>{tip.availability}</td>
                   <td>{tip.difficultyLevel}</td>
                   <th>
                     <a

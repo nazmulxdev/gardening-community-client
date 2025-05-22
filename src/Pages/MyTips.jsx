@@ -1,9 +1,130 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { FaEdit, FaEye } from "react-icons/fa";
+import { Tooltip } from "react-tooltip";
+import LoadingSpinner from "../Utilities/LoadingSpinner";
+import AuthContext from "../Context/AuthContext";
+import { MdDelete } from "react-icons/md";
+import { useNavigate } from "react-router";
 
 const MyTips = () => {
+  const { presentUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+  const [myTips, setMyTips] = useState([]);
+  console.log(myTips);
+  useEffect(() => {
+    setLoading(true);
+    fetch(`http://localhost:3000/tipsByUser?email=${presentUser.email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setMyTips(data);
+        setLoading(false);
+      });
+  }, [presentUser.email]);
+
+  console.log(presentUser.email);
   return (
-    <div>
-      <p>this is my tips</p>
+    <div className="max-w-screen-2xl mx-auto">
+      <div className="my-8">
+        <h1
+          className="font-bold text-4xl text-center
+        "
+        >
+          <span className="primaryColor">My Garden</span> Insights
+        </h1>
+      </div>
+      <div className="overflow-x-auto">
+        <table className="table">
+          {/* head */}
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Title</th>
+              <th>Availability</th>
+              <th>Difficulty</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          {loading ? (
+            <tbody>
+              <tr>
+                <td colSpan="5" className="mx-auto">
+                  <LoadingSpinner></LoadingSpinner>
+                </td>
+              </tr>
+            </tbody>
+          ) : (
+            <tbody>
+              {myTips.length === 0 ? (
+                <tr>
+                  <td colSpan="5" className="text-center py-10">
+                    <div className="flex flex-col items-center justify-center space-y-4">
+                      <p className="text-lg font-semibold">
+                        You haven’t shared any gardening tips yet!!!
+                      </p>
+                      <button
+                        onClick={() => navigate("/shareGardenTips")}
+                        className="btn btn-sm my-btn"
+                      >
+                        Share Your First Tip
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ) : (
+                myTips?.map((tip, index) => (
+                  <tr key={index}>
+                    <th>{index + 1}</th>
+                    <td>
+                      <div className="flex items-center gap-3">
+                        <div className="avatar">
+                          <div className="mask mask-squircle h-12 w-12">
+                            <img
+                              src={tip.photoUrl}
+                              alt="Avatar Tailwind CSS Component"
+                            />
+                          </div>
+                        </div>
+                        <div>
+                          <div className="font-bold">{tip.title}</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>{tip.availability}</td>
+                    <td>{tip.difficultyLevel}</td>
+                    <th className="space-x-2">
+                      <a
+                        data-tooltip-id="edit"
+                        data-tooltip-content="Update Tip"
+                      >
+                        <button className="btn my-btn btn-xs">
+                          <FaEdit></FaEdit>
+                        </button>
+                      </a>
+                      <Tooltip
+                        id="edit"
+                        className="backGround primaryColor"
+                      ></Tooltip>
+                      <a
+                        data-tooltip-id="delete"
+                        data-tooltip-content="Delete Tip"
+                      >
+                        <button className="btn my-btn btn-xs">
+                          <MdDelete></MdDelete>
+                        </button>
+                      </a>
+                      <Tooltip
+                        id="delete"
+                        className="backGround primaryColor"
+                      ></Tooltip>
+                    </th>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          )}
+        </table>
+      </div>
     </div>
   );
 };
