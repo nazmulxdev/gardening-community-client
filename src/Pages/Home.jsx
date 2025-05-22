@@ -3,6 +3,8 @@ import LoadingSpinner from "../Utilities/LoadingSpinner";
 import SwiperSliderCarousel from "../Components/SwiperSliderCarousel";
 import ActiveGardeners from "../Components/ActiveGardeners";
 import TopTrendingTips from "../Components/TopTrendingTips";
+import FaqSection from "../Components/FaqSection";
+import Contact from "../Components/Contact";
 
 const Home = () => {
   return (
@@ -22,6 +24,8 @@ const Home = () => {
         Dive in and get inspired to grow your green space!
       </p>
       <TopTrendingTips></TopTrendingTips>
+      <FaqSection></FaqSection>
+      <Contact></Contact>
     </div>
   );
 };
