@@ -5,6 +5,8 @@ import LoadingSpinner from "../Utilities/LoadingSpinner";
 import AuthContext from "../Context/AuthContext";
 import { MdDelete } from "react-icons/md";
 import { useNavigate } from "react-router";
+import Swal from "sweetalert2";
+import { successMessage } from "../Utilities/sweetAlerts";
 
 const MyTips = () => {
   const { presentUser } = useContext(AuthContext);
@@ -23,6 +25,37 @@ const MyTips = () => {
   }, [presentUser.email]);
 
   console.log(presentUser.email);
+
+  const handleDelete = (id) => {
+    console.log(id);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(
+          `http://localhost:3000/tipsByUser?email=${presentUser.email}&id=${id}`,
+          {
+            method: "DELETE",
+          }
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount) {
+              const remainingTips = myTips.filter((tip) => tip._id !== id);
+              setMyTips(remainingTips);
+              successMessage("Your shared tip has been deleted successfully");
+            }
+          });
+      }
+    });
+  };
+
   return (
     <div className="max-w-screen-2xl mx-auto">
       <div className="my-8">
@@ -112,7 +145,10 @@ const MyTips = () => {
                           data-tooltip-id="delete"
                           data-tooltip-content="Delete Tip"
                         >
-                          <button className="btn my-btn btn-xs">
+                          <button
+                            onClick={() => handleDelete(tip._id)}
+                            className="btn my-btn btn-xs"
+                          >
                             <MdDelete></MdDelete>
                           </button>
                         </a>
