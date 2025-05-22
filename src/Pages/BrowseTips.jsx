@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { Tooltip } from "react-tooltip";
 import LoadingSpinner from "../Utilities/LoadingSpinner";
+import { Link } from "react-router";
 
 const BrowseTips = () => {
   const [loading, setLoading] = useState(true);
@@ -85,14 +86,15 @@ const BrowseTips = () => {
                   <td>{tip.availability}</td>
                   <td>{tip.difficultyLevel}</td>
                   <th>
-                    <a
+                    <Link
+                      to={`/tipDetails/${tip._id}`}
                       data-tooltip-id="my-tooltip"
                       data-tooltip-content="See More Details"
                     >
                       <button className="btn my-btn btn-xs">
                         <FaEye></FaEye>
                       </button>
-                    </a>
+                    </Link>
                     <Tooltip
                       id="my-tooltip"
                       className="backGround primaryColor"

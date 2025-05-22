@@ -10,6 +10,7 @@ import ShareGardenTips from "../Pages/ShareGardenTips";
 import MyTips from "../Pages/MyTips";
 import PrivateRoute from "../Private/PrivateRoute";
 import LoadingSpinner from "../Utilities/LoadingSpinner";
+import TipDetails from "../Pages/TipDetails";
 
 const Router = createBrowserRouter([
   {
@@ -29,6 +30,17 @@ const Router = createBrowserRouter([
       {
         path: "/browseTips",
         Component: BrowseTips,
+      },
+      {
+        path: "/tipDetails/:id",
+        element: (
+          <PrivateRoute>
+            <TipDetails></TipDetails>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/tipsDetails/${params.id}`),
+        hydrateFallbackElement: <LoadingSpinner></LoadingSpinner>,
       },
       {
         path: "/shareGardenTips",
