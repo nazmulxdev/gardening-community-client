@@ -29,6 +29,8 @@ const Router = createBrowserRouter([
       {
         path: "/browseTips",
         Component: BrowseTips,
+        loader: () => fetch("http://localhost:3000/gardenersTips/public"),
+        hydrateFallbackElement: <LoadingSpinner></LoadingSpinner>,
       },
       {
         path: "/shareGardenTips",
