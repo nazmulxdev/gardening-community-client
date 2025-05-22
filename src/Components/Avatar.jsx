@@ -9,7 +9,6 @@ import { FaEdit } from "react-icons/fa";
 const Avatar = () => {
   const [open, setOpen] = useState(false);
   const { loggedOutUser, presentUser } = useContext(AuthContext);
-  console.log(presentUser.photoURL);
   const navigate = useNavigate();
   const handleLogOut = () => {
     loggedOutUser()

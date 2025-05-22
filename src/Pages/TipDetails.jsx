@@ -1,22 +1,33 @@
 import React, { useState } from "react";
-import { FaArrowLeft, FaBackward, FaHeart } from "react-icons/fa";
-import { Link, useLoaderData, useParams } from "react-router";
+import { FaArrowLeft, FaHeart } from "react-icons/fa";
+import { Link, useLoaderData } from "react-router";
 
 const TipDetails = () => {
-  const { id } = useParams();
   const tip = useLoaderData();
 
   const [likes, setLikes] = useState(tip.totalLiked);
   const [liked, setLiked] = useState(false);
 
-  const handleLike = () => {
+  const handleLike = (id, currentLikes) => {
     if (!liked) {
-      setLikes((prev) => prev + 1);
+      const newLikes = currentLikes + 1;
+      setLikes(newLikes);
       setLiked(true);
+      console.log(newLikes);
+
+      fetch(`http://localhost:3000/tipsDetails/${id}`, {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ totalLiked: newLikes }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+        });
     }
   };
-  console.log(tip);
-  console.log(id);
   return (
     <div className="max-w-screen-2xl mx-auto ">
       <div className="my-8">
@@ -67,7 +78,7 @@ const TipDetails = () => {
 
           <div className="pt-4 flex items-center gap-2">
             <button
-              onClick={handleLike}
+              onClick={() => handleLike(tip._id, likes)}
               className={`btn btn-sm ${
                 liked ? "btn-error text-red-500" : "btn-outline btn-error"
               }`}
