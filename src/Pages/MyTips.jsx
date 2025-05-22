@@ -92,31 +92,35 @@ const MyTips = () => {
                     </td>
                     <td>{tip.availability}</td>
                     <td>{tip.difficultyLevel}</td>
-                    <th className="space-x-2">
-                      <a
-                        data-tooltip-id="edit"
-                        data-tooltip-content="Update Tip"
-                      >
-                        <button className="btn my-btn btn-xs">
-                          <FaEdit></FaEdit>
-                        </button>
-                      </a>
-                      <Tooltip
-                        id="edit"
-                        className="backGround primaryColor"
-                      ></Tooltip>
-                      <a
-                        data-tooltip-id="delete"
-                        data-tooltip-content="Delete Tip"
-                      >
-                        <button className="btn my-btn btn-xs">
-                          <MdDelete></MdDelete>
-                        </button>
-                      </a>
-                      <Tooltip
-                        id="delete"
-                        className="backGround primaryColor"
-                      ></Tooltip>
+                    <th className=" grid grid-cols-2 items-center justify-center">
+                      <div>
+                        <a
+                          data-tooltip-id="edit"
+                          data-tooltip-content="Update Tip"
+                        >
+                          <button className="btn my-btn btn-xs">
+                            <FaEdit></FaEdit>
+                          </button>
+                        </a>
+                        <Tooltip
+                          id="edit"
+                          className="backGround primaryColor"
+                        ></Tooltip>
+                      </div>
+                      <div>
+                        <a
+                          data-tooltip-id="delete"
+                          data-tooltip-content="Delete Tip"
+                        >
+                          <button className="btn my-btn btn-xs">
+                            <MdDelete></MdDelete>
+                          </button>
+                        </a>
+                        <Tooltip
+                          id="delete"
+                          className="backGround primaryColor"
+                        ></Tooltip>
+                      </div>
                     </th>
                   </tr>
                 ))

@@ -3,6 +3,8 @@ import AuthContext from "../Context/AuthContext";
 import { errorMessage, successMessage } from "../Utilities/sweetAlerts";
 import { useNavigate } from "react-router";
 import defaultPic from "../assets/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png";
+import { Tooltip } from "react-tooltip";
+import { FaEdit } from "react-icons/fa";
 
 const Avatar = () => {
   const [open, setOpen] = useState(false);
@@ -24,18 +26,25 @@ const Avatar = () => {
 
   return (
     <div className="relative inline-block text-left">
-      {/* Tooltip and Avatar */}
-      <div
-        className="tooltip tooltip-bottom"
-        data-tip={presentUser?.displayName}
-        onClick={() => setOpen(!open)}
-      >
+      <div onClick={() => setOpen(!open)}>
         <div className="avatar avatar-online cursor-pointer">
           <div className="w-12 rounded-full">
-            <img
-              src={presentUser ? presentUser.photoURL : defaultPic}
-              alt="User"
-            />
+            <div>
+              <a
+                data-tooltip-id="edit"
+                data-tooltip-content={presentUser?.displayName}
+              >
+                <img
+                  src={presentUser ? presentUser.photoURL : defaultPic}
+                  alt="User"
+                />
+              </a>
+              <Tooltip
+                id="edit"
+                place="top"
+                className="backGround primaryColor  px-2 py-1 rounded text-sm shadow z-50 font-bold"
+              ></Tooltip>
+            </div>
           </div>
         </div>
       </div>
