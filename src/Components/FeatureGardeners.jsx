@@ -1,7 +1,6 @@
 import React from "react";
 
 const FeatureGardeners = ({ gardener }) => {
-  console.log(gardener);
   return (
     <div className="flex flex-col justify-center p-6 shadow-md hover:shadow-2xl rounded-xl sm:px-12 backGround">
       <img

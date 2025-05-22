@@ -6,7 +6,6 @@ import LoadingSpinner from "../Utilities/LoadingSpinner";
 
 const SwiperSliderCarousel = () => {
   const [eventSlides, setEventSlides] = useState([]);
-  console.log(eventSlides);
   const [activeSlide, setActiveSlide] = useState(0);
   const [loading, setLoading] = useState(true);
 
@@ -19,7 +18,6 @@ const SwiperSliderCarousel = () => {
         setLoading(false);
       });
   }, []);
-  console.log(eventSlides);
 
   return (
     <div>
