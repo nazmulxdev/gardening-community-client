@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 import LoadingSpinner from "../Utilities/LoadingSpinner";
 import AuthContext from "../Context/AuthContext";
+import { successMessage } from "../Utilities/sweetAlerts";
 
 const UpdateTip = () => {
   const { id } = useParams();
   const [updateUser, setUpdateUser] = useState({});
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
   useEffect(() => {
     setLoading(true);
     fetch(`http://localhost:3000/tipsDetails/${id}`)
@@ -29,6 +31,29 @@ const UpdateTip = () => {
     availability,
   } = updateUser;
 
+  const handleUpdateForm = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    const updatedTip = Object.fromEntries(formData.entries());
+    console.log(updatedTip);
+    fetch(`http://localhost:3000/tipsDetails/${id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updatedTip),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          successMessage("Your tipDetails update successfully").then(() => {
+            navigate("/myTips");
+          });
+        }
+      });
+  };
+
   console.log(id);
   console.log(updateUser);
   return (
@@ -40,7 +65,7 @@ const UpdateTip = () => {
         {loading ? (
           <LoadingSpinner></LoadingSpinner>
         ) : (
-          <form className="my-6">
+          <form onSubmit={handleUpdateForm} className="my-6">
             <div className="card-body grid grid-cols-1 md:grid-cols-2">
               <fieldset className="fieldset">
                 <label className="text-lg font-medium">Title</label>

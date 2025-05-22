@@ -16,8 +16,8 @@ const GardenerSingleData = ({ gardener }) => {
           />
         </div>
         <div className="sm:col-span-2  text-start ">
-          <div className="flex items-center space-x-2">
-            <h1 className="font-bold text-2xl  mt-4">{gardener.name}</h1>
+          <div className="flex items-center space-x-2 mt-4">
+            <h1 className="font-bold text-2xl">{gardener.name}</h1>
             <div>
               {gardener.status === "active" ? (
                 <span className="bg-green-100 text-green-800 text-xs font-bold px-3 py-1 rounded-full shadow">
