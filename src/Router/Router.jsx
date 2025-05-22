@@ -12,11 +12,13 @@ import PrivateRoute from "../Private/PrivateRoute";
 import LoadingSpinner from "../Utilities/LoadingSpinner";
 import TipDetails from "../Pages/TipDetails";
 import UpdateTip from "../Pages/UpdateTip";
+import ErrorPage from "../ErrorPage";
 
 const Router = createBrowserRouter([
   {
     path: "/",
     Component: Root,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         index: true,
@@ -76,6 +78,10 @@ const Router = createBrowserRouter([
   {
     path: "/register",
     Component: Register,
+  },
+  {
+    path: "/*",
+    Component: ErrorPage,
   },
 ]);
 
