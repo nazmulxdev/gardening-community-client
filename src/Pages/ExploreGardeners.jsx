@@ -6,6 +6,7 @@ const ExploreGardeners = () => {
   const gardenersData = useLoaderData();
   const [allGardeners, setAllGardeners] = useState([]);
   useEffect(() => {
+    document.title = "GreenCircle | ExploreGardeners";
     setAllGardeners(gardenersData);
   }, [gardenersData]);
 

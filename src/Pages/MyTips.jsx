@@ -15,6 +15,7 @@ const MyTips = () => {
   const [myTips, setMyTips] = useState([]);
   console.log(myTips);
   useEffect(() => {
+    document.title = `GreenCircle | ${presentUser.displayName}`;
     setLoading(true);
     fetch(`http://localhost:3000/tipsByUser?email=${presentUser.email}`)
       .then((res) => res.json())
@@ -22,7 +23,7 @@ const MyTips = () => {
         setMyTips(data);
         setLoading(false);
       });
-  }, [presentUser.email]);
+  }, [presentUser]);
 
   console.log(presentUser.email);
 

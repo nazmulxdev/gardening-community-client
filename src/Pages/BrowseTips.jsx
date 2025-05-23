@@ -10,6 +10,7 @@ const BrowseTips = () => {
   const [difficulty, setDifficulty] = useState("");
   console.log(typeof difficulty, difficulty);
   useEffect(() => {
+    document.title = "GreenCircle | BrowseTips";
     setLoading(true);
     fetch(`http://localhost:3000/gardenersTips/public?difficulty=${difficulty}`)
       .then((res) => res.json())

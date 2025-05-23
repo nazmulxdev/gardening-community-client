@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaArrowLeft, FaHeart } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router";
 
@@ -28,6 +28,10 @@ const TipDetails = () => {
         });
     }
   };
+
+  useEffect(() => {
+    document.title = `GreenCircle | ${tip.title}`;
+  }, [tip]);
   return (
     <div className="max-w-screen-2xl mx-auto ">
       <div className="my-8">

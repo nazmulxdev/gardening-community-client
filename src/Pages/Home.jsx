@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import LoadingSpinner from "../Utilities/LoadingSpinner";
 import SwiperSliderCarousel from "../Components/SwiperSliderCarousel";
 import ActiveGardeners from "../Components/ActiveGardeners";
@@ -7,6 +7,9 @@ import FaqSection from "../Components/FaqSection";
 import Contact from "../Components/Contact";
 
 const Home = () => {
+  useEffect(() => {
+    document.title = "GreenCircle | Home";
+  }, []);
   return (
     <div className="max-w-screen-2xl mx-auto space-y-6">
       <SwiperSliderCarousel></SwiperSliderCarousel>

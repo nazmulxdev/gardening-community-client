@@ -10,6 +10,7 @@ const UpdateTip = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   useEffect(() => {
+    document.title = `GreenCircle | UpdateTip`;
     setLoading(true);
     fetch(`http://localhost:3000/tipsDetails/${id}`)
       .then((res) => res.json())

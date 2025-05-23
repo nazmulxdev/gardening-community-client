@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import AuthContext from "../Context/AuthContext";
 import { successMessage } from "../Utilities/sweetAlerts";
 
@@ -27,6 +27,10 @@ const ShareGardenTips = () => {
         }
       });
   };
+
+  useEffect(() => {
+    document.title = "GreenCircle | ShareGardenTips";
+  }, []);
   return (
     <div className="max-w-screen-2xl mx-auto">
       <h1 className="font-bold text-4xl text-center mt-10">
