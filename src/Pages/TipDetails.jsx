@@ -96,7 +96,7 @@ const TipDetails = () => {
         </div>
       </div>
       <div className="mx-auto text-center my-10">
-        <Link to={-1}>
+        <Link to="/browseTips">
           <button className="btn my-btn ">
             <FaArrowLeft></FaArrowLeft> Go back
           </button>

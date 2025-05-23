@@ -196,7 +196,7 @@ const UpdateTip = () => {
       </div>
       <h1 className="font-bold text-center mb-8">
         Have changed mind?{" "}
-        <Link to={-1} className="primaryColor">
+        <Link to="/myTips" className="primaryColor">
           go back!
         </Link>
       </h1>
