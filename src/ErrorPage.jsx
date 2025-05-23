@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Lottie from "lottie-react";
 import "./index.css";
 
@@ -6,6 +6,9 @@ import errorAnimation from "../public/Animation - 1747934004264 (1).json";
 import { Link } from "react-router";
 
 const ErrorPage = () => {
+  useEffect(() => {
+    document.title = "GreenCircle | ErrorPage";
+  }, []);
   return (
     <div className="min-h-screen mx-auto bg-[#05a540]">
       <Lottie
