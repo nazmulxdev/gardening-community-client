@@ -9,13 +9,11 @@ const LogIn = () => {
     useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(location.state);
 
   const handleLogIn = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(email, password);
 
     loggedInUser(email, password)
       .then((result) => {

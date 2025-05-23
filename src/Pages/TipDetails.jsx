@@ -13,9 +13,8 @@ const TipDetails = () => {
       const newLikes = currentLikes + 1;
       setLikes(newLikes);
       setLiked(true);
-      console.log(newLikes);
 
-      fetch(`http://localhost:3000/tipsDetails/${id}`, {
+      fetch(`https://final-gerdaning-server.vercel.app/tipsDetails/${id}`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",

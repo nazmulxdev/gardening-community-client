@@ -20,7 +20,6 @@ const Register = () => {
     const { name, photoUrl, email, password } = Object.fromEntries(
       formData.entries()
     );
-    console.log(name, photoUrl, email, password);
     const profile = {
       displayName: name,
       photoURL: photoUrl,

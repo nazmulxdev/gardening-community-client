@@ -11,7 +11,7 @@ const SwiperSliderCarousel = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:3000/eventCollection")
+    fetch("https://final-gerdaning-server.vercel.app/eventCollection")
       .then((res) => res.json())
       .then((data) => {
         setEventSlides(data);

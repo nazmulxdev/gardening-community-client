@@ -7,7 +7,7 @@ const ActiveGardeners = () => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:3000/activeGardeners")
+    fetch("https://final-gerdaning-server.vercel.app/activeGardeners")
       .then((res) => res.json())
       .then((data) => {
         setActiveGardeners(data);

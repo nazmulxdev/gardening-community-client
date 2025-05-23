@@ -12,7 +12,7 @@ const UpdateTip = () => {
   useEffect(() => {
     document.title = `GreenCircle | UpdateTip`;
     setLoading(true);
-    fetch(`http://localhost:3000/tipsDetails/${id}`)
+    fetch(`https://final-gerdaning-server.vercel.app/tipsDetails/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setUpdateUser(data);
@@ -37,8 +37,7 @@ const UpdateTip = () => {
     const form = e.target;
     const formData = new FormData(form);
     const updatedTip = Object.fromEntries(formData.entries());
-    console.log(updatedTip);
-    fetch(`http://localhost:3000/tipsDetails/${id}`, {
+    fetch(`https://final-gerdaning-server.vercel.app/tipsDetails/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -54,9 +53,6 @@ const UpdateTip = () => {
         }
       });
   };
-
-  console.log(id);
-  console.log(updateUser);
   return (
     <div className="max-w-screen-2xl mx-auto">
       <h1 className="font-bold text-4xl text-center mt-10">

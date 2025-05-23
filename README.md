@@ -1,4 +1,4 @@
-# Project Name : Gardening Community and Resource Hub 
+# Project Name : Gardening Community and Resource Hub
 
 - Website Title Green Circle
 
@@ -8,8 +8,9 @@
 
 # Project's Live Site Link
 
-- 
-- 
+- https://gardening-community-e4aad.web.app/
+
+- https://gardening-community-e4aad.firebaseapp.com/
 
 # Key Feature of this Project
 
@@ -32,7 +33,6 @@ There are some key feature of this site . You have to log in or sign up first to
 - In share gardeners tips page you can post you gardening tip.
 
 - In my tips page you can see all the public and hidden gardening tips shared by you.
-
 
 # NPM packages used for this website
 

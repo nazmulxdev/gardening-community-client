@@ -10,7 +10,6 @@ const ExploreGardeners = () => {
     setAllGardeners(gardenersData);
   }, [gardenersData]);
 
-  console.log(allGardeners);
 
   return (
     <div className="max-w-screen-2xl mx-auto">

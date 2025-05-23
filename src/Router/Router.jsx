@@ -26,7 +26,8 @@ const Router = createBrowserRouter([
       {
         path: "/exploreGardeners",
         Component: ExploreGardeners,
-        loader: () => fetch("http://localhost:3000/gardenersData"),
+        loader: () =>
+          fetch("https://final-gerdaning-server.vercel.app/gardenersData"),
         hydrateFallbackElement: <LoadingSpinner></LoadingSpinner>,
       },
       {
@@ -41,7 +42,9 @@ const Router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/tipsDetails/${params.id}`),
+          fetch(
+            `https://final-gerdaning-server.vercel.app/tipsDetails/${params.id}`
+          ),
         hydrateFallbackElement: <LoadingSpinner></LoadingSpinner>,
       },
       {

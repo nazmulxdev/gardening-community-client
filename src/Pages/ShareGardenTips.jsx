@@ -4,15 +4,13 @@ import { successMessage } from "../Utilities/sweetAlerts";
 
 const ShareGardenTips = () => {
   const { presentUser } = useContext(AuthContext);
-  console.log(presentUser);
   const handleForm = (e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
     const gardenTip = Object.fromEntries(formData.entries());
     const tipDetails = { ...gardenTip, totalLiked: 0 };
-    console.log(tipDetails);
-    fetch("http://localhost:3000/gardenersTips", {
+    fetch("https://final-gerdaning-server.vercel.app/gardenersTips", {
       method: "POST",
       headers: {
         "content-type": "application/json",

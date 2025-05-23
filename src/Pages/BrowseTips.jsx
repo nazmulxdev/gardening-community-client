@@ -8,18 +8,18 @@ const BrowseTips = () => {
   const [loading, setLoading] = useState(true);
   const [publicTips, setPublicTips] = useState([]);
   const [difficulty, setDifficulty] = useState("");
-  console.log(typeof difficulty, difficulty);
   useEffect(() => {
     document.title = "GreenCircle | BrowseTips";
     setLoading(true);
-    fetch(`http://localhost:3000/gardenersTips/public?difficulty=${difficulty}`)
+    fetch(
+      `https://final-gerdaning-server.vercel.app/gardenersTips/public?difficulty=${difficulty}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setPublicTips(data);
         setLoading(false);
       });
   }, [difficulty]);
-  console.log(publicTips);
   return (
     <div className="max-w-screen-2xl mx-auto">
       <div>

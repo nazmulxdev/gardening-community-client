@@ -13,11 +13,12 @@ const MyTips = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [myTips, setMyTips] = useState([]);
-  console.log(myTips);
   useEffect(() => {
     document.title = `GreenCircle | ${presentUser.displayName}`;
     setLoading(true);
-    fetch(`http://localhost:3000/tipsByUser?email=${presentUser.email}`)
+    fetch(
+      `https://final-gerdaning-server.vercel.app/tipsByUser?email=${presentUser.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setMyTips(data);
@@ -25,10 +26,8 @@ const MyTips = () => {
       });
   }, [presentUser]);
 
-  console.log(presentUser.email);
 
   const handleDelete = (id) => {
-    console.log(id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -40,7 +39,7 @@ const MyTips = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(
-          `http://localhost:3000/tipsByUser?email=${presentUser.email}&id=${id}`,
+          `https://final-gerdaning-server.vercel.app/tipsByUser?email=${presentUser.email}&id=${id}`,
           {
             method: "DELETE",
           }
