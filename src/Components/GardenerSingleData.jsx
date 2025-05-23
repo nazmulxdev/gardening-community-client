@@ -1,7 +1,6 @@
 import React from "react";
 
 const GardenerSingleData = ({ gardener }) => {
-  console.log(gardener);
   return (
     <div className="">
       <div

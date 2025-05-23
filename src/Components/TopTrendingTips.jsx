@@ -14,7 +14,6 @@ const TopTrendingTips = () => {
         setLoading(false);
       });
   }, []);
-  console.log(trendingTips);
   return (
     <div>
       {loading ? (
