@@ -25,7 +25,7 @@ const MyTips = () => {
         setMyTips(data);
         setLoading(false);
       });
-  }, [presentUser]);
+  }, [presentUser,baseUrl]);
 
 
   const handleDelete = (id) => {

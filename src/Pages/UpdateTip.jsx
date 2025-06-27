@@ -19,7 +19,7 @@ const UpdateTip = () => {
         setUpdateUser(data);
         setLoading(false);
       });
-  }, [id]);
+  }, [id,baseUrl]);
 
   const {
     title,

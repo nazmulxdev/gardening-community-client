@@ -3,23 +3,23 @@ import { FaEye } from "react-icons/fa";
 import { Tooltip } from "react-tooltip";
 import LoadingSpinner from "../Utilities/LoadingSpinner";
 import { Link } from "react-router";
+import useBase from "../Hooks/useBase";
 
 const AllGardeningTips = () => {
+  const baseUrl = useBase();
   const [loading, setLoading] = useState(true);
   const [publicTips, setPublicTips] = useState([]);
   const [difficulty, setDifficulty] = useState("");
   useEffect(() => {
     document.title = "GreenCircle | BrowseTips";
     setLoading(true);
-    fetch(
-      `https://final-gerdaning-server.vercel.app/gardenersTips/public?difficulty=${difficulty}`,
-    )
+    fetch(`${baseUrl}/gardenersTips/dashboard/public?difficulty=${difficulty}`)
       .then((res) => res.json())
       .then((data) => {
         setPublicTips(data);
         setLoading(false);
       });
-  }, [difficulty]);
+  }, [difficulty, baseUrl]);
   return (
     <div className="max-w-screen-2xl mx-auto">
       <div>
