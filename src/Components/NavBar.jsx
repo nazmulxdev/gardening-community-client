@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
 import ThemeHandler from "../Utilities/ThemeHandler";
 import { NavLink, useLocation } from "react-router";
-import webLogo from "../assets/—Pngtree—green sprout leaf logo design_7431531.png";
 import Avatar from "./Avatar";
 import AuthContext from "../Context/AuthContext";
+import WebLogo from "./WebLogo";
+import { useContext } from "react";
 
 const NavBar = () => {
   const { presentUser } = useContext(AuthContext);
@@ -15,6 +15,11 @@ const NavBar = () => {
       </li>
       <li>
         <NavLink to="/myTips">MyTips</NavLink>
+      </li>
+      <li>
+        <NavLink to="/dashboard">
+          Dashboard
+        </NavLink>
       </li>
     </>
   );
@@ -71,12 +76,7 @@ const NavBar = () => {
               {links}
             </ul>
           </div>
-          <div className="flex justify-center items-center">
-            <img className="w-16 lg:w-20" src={webLogo} alt="webLogo" />
-            <p className="font-bold hidden md:block">
-              <span className="text-green-500">Green</span>Circle
-            </p>
-          </div>
+          <WebLogo></WebLogo>
         </div>
         <div className="navbar-center hidden md:flex">
           <ul className="menu menu-horizontal px-1 font-bold">{links}</ul>

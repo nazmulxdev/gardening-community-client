@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import AuthContext from "../Context/AuthContext";
 import { successMessage } from "../Utilities/sweetAlerts";
 
-const ShareGardenTips = () => {
+const ShareGardeningTipsDash = () => {
   const baseUrl=import.meta.env.VITE_BASE_URL
   const { presentUser } = useContext(AuthContext);
   const handleForm = (e) => {
@@ -163,4 +163,4 @@ const ShareGardenTips = () => {
   );
 };
 
-export default ShareGardenTips;
+export default ShareGardeningTipsDash;

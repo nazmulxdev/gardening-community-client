@@ -3,11 +3,12 @@ import FeatureGardeners from "./FeatureGardeners";
 import LoadingSpinner from "../Utilities/LoadingSpinner";
 
 const ActiveGardeners = () => {
+  const baseUrl=import.meta.env.VITE_BASE_URL
   const [activeGardeners, setActiveGardeners] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setLoading(true);
-    fetch("https://final-gerdaning-server.vercel.app/activeGardeners")
+    fetch(`${baseUrl}/activeGardeners`)
       .then((res) => res.json())
       .then((data) => {
         setActiveGardeners(data);

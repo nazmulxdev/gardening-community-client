@@ -34,13 +34,25 @@ const Footer = () => {
           <div>
             <p className="font-semibold">Follow Us</p>
             <div className="flex gap-4 mt-2">
-              <a href="#" className="text-blue-600 text-xl hover:text-blue-800">
+              <a
+                href="https://www.facebook.com/"
+                target="_blank"
+                className="text-blue-600 text-xl hover:text-blue-800"
+              >
                 <FaFacebook />
               </a>
-              <a href="#" className="text-sky-500 text-xl hover:text-sky-700">
+              <a
+                href="https://twitter.com/"
+                target="_blank"
+                className="text-sky-500 text-xl hover:text-sky-700"
+              >
                 <FaTwitter />
               </a>
-              <a href="#" className="text-pink-600 text-xl hover:text-pink-800">
+              <a
+                href="https://www.instagram.com/"
+                target="_blank"
+                className="text-pink-600 text-xl hover:text-pink-800"
+              >
                 <FaInstagram />
               </a>
             </div>

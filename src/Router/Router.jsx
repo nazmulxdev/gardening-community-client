@@ -13,6 +13,13 @@ import LoadingSpinner from "../Utilities/LoadingSpinner";
 import TipDetails from "../Pages/TipDetails";
 import UpdateTip from "../Pages/UpdateTip";
 import ErrorPage from "../ErrorPage";
+import DashBoardLayOut from "../DashBoard/DashBoardLayout";
+import DashBoardHome from "../DashBoard/DashBoardHome";
+import AllGardeningTips from "../DashBoard/AllGardeningTips";
+import ShareGardeningTipsDash from "../DashBoard/ShareGardeningTipsDash";
+import MyTipsDash from "../DashBoard/MyTipsDash";
+
+const baseUrl = import.meta.env.VITE_BASE_URL;
 
 const Router = createBrowserRouter([
   {
@@ -26,8 +33,7 @@ const Router = createBrowserRouter([
       {
         path: "/exploreGardeners",
         Component: ExploreGardeners,
-        loader: () =>
-          fetch("https://final-gerdaning-server.vercel.app/gardenersData"),
+        loader: () => fetch(`${baseUrl}/gardenersData`),
         hydrateFallbackElement: <LoadingSpinner></LoadingSpinner>,
       },
       {
@@ -41,10 +47,7 @@ const Router = createBrowserRouter([
             <TipDetails></TipDetails>
           </PrivateRoute>
         ),
-        loader: ({ params }) =>
-          fetch(
-            `https://final-gerdaning-server.vercel.app/tipsDetails/${params.id}`
-          ),
+        loader: ({ params }) => fetch(`${baseUrl}/tipsDetails/${params.id}`),
         hydrateFallbackElement: <LoadingSpinner></LoadingSpinner>,
       },
       {
@@ -84,6 +87,49 @@ const Router = createBrowserRouter([
   {
     path: "/*",
     Component: ErrorPage,
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <DashBoardLayOut></DashBoardLayOut>
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        index: true,
+        path: "/dashboard",
+        element: (
+          <PrivateRoute>
+            <DashBoardHome></DashBoardHome>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/allGardeningTips",
+        element: (
+          <PrivateRoute>
+            <AllGardeningTips></AllGardeningTips>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/shareGardeningTips",
+        element: (
+          <PrivateRoute>
+            <ShareGardeningTipsDash></ShareGardeningTipsDash>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/myGardeningTips",
+        element: (
+          <PrivateRoute>
+            <MyTipsDash></MyTipsDash>
+          </PrivateRoute>
+        ),
+      },
+    ],
   },
 ]);
 

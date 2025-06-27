@@ -5,6 +5,8 @@ import ActiveGardeners from "../Components/ActiveGardeners";
 import TopTrendingTips from "../Components/TopTrendingTips";
 import FaqSection from "../Components/FaqSection";
 import Contact from "../Components/Contact";
+import GardenSuccessStories from "../Components/GardenSuccessStories";
+import GardenerMapShowcase from "../Components/GardenerMapShowcase";
 
 const Home = () => {
   useEffect(() => {
@@ -27,6 +29,8 @@ const Home = () => {
         Dive in and get inspired to grow your green space!
       </p>
       <TopTrendingTips></TopTrendingTips>
+      <GardenSuccessStories></GardenSuccessStories>
+      <GardenerMapShowcase></GardenerMapShowcase>
       <FaqSection></FaqSection>
       <Contact></Contact>
     </div>

@@ -5,13 +5,14 @@ import { Typewriter } from "react-simple-typewriter";
 import LoadingSpinner from "../Utilities/LoadingSpinner";
 
 const SwiperSliderCarousel = () => {
+  const baseUrl=import.meta.env.VITE_BASE_URL
   const [eventSlides, setEventSlides] = useState([]);
   const [activeSlide, setActiveSlide] = useState(0);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(true);
-    fetch("https://final-gerdaning-server.vercel.app/eventCollection")
+    fetch(`${baseUrl}/eventCollection`)
       .then((res) => res.json())
       .then((data) => {
         setEventSlides(data);

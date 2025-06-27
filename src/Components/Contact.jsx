@@ -30,21 +30,21 @@ const Contact = () => {
           <div className="flex flex-col w-full divide-y">
             <a
               rel="noopener noreferrer"
-              href="#"
+              href=""
               className="flex items-center justify-center p-4 sm:py-8 lg:py-12 primaryColor font-bold"
             >
               🌼 Plant Care 101
             </a>
             <a
               rel="noopener noreferrer"
-              href="#"
+              href=""
               className="flex items-center justify-center p-4 sm:py-8 lg:py-12 primaryColor font-bold"
             >
               🧑‍🌾 Explore Gardeners Help
             </a>
             <a
               rel="noopener noreferrer"
-              href="#"
+              href=""
               className="flex items-center justify-center p-4 sm:py-8 lg:py-12 primaryColor font-bold"
             >
               🧑‍🌾 Explore Gardeners Help
@@ -53,21 +53,21 @@ const Contact = () => {
           <div className="flex flex-col w-full divide-y">
             <a
               rel="noopener noreferrer"
-              href="#"
+              href=""
               className="flex items-center justify-center p-4 sm:py-8 lg:py-12 primaryColor font-bold"
             >
               📦 My Tips Support
             </a>
             <a
               rel="noopener noreferrer"
-              href="#"
+              href=""
               className="flex items-center justify-center p-4 sm:py-8 lg:py-12 primaryColor font-bold"
             >
               📍 Local Gardening Events
             </a>
             <a
               rel="noopener noreferrer"
-              href="#"
+              href=""
               className="flex items-center justify-center p-4 sm:py-8 lg:py-12 primaryColor font-bold"
             >
               🔐 Account & Privacy
@@ -83,14 +83,14 @@ const Contact = () => {
             </a>
             <a
               rel="noopener noreferrer"
-              href="#"
+              href=""
               className="flex items-center justify-center p-4 sm:py-8 lg:py-12 primaryColor font-bold"
             >
               📬 Contact Us
             </a>
             <a
               rel="noopener noreferrer"
-              href="#"
+              href=""
               className="flex items-center justify-center p-4 sm:py-8 lg:py-12 primaryColor font-bold"
             >
               👥 Community Support

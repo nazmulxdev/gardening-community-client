@@ -8,7 +8,7 @@ import { Link, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { successMessage } from "../Utilities/sweetAlerts";
 
-const MyTips = () => {
+const MyTipsDash = () => {
   const baseUrl=import.meta.env.VITE_BASE_URL
   const { presentUser } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -171,4 +171,4 @@ const MyTips = () => {
   );
 };
 
-export default MyTips;
+export default MyTipsDash;

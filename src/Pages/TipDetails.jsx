@@ -3,6 +3,7 @@ import { FaArrowLeft, FaHeart } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router";
 
 const TipDetails = () => {
+  const baseUrl = import.meta.env.VITE_BASE_URL;
   const tip = useLoaderData();
 
   const [likes, setLikes] = useState(tip.totalLiked);
@@ -14,7 +15,7 @@ const TipDetails = () => {
       setLikes(newLikes);
       setLiked(true);
 
-      fetch(`https://final-gerdaning-server.vercel.app/tipsDetails/${id}`, {
+      fetch(`${baseUrl}/tipsDetails/${id}`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",
@@ -96,7 +97,7 @@ const TipDetails = () => {
         </div>
       </div>
       <div className="mx-auto text-center my-10">
-        <Link to="/browseTips">
+        <Link to={-1}>
           <button className="btn my-btn ">
             <FaArrowLeft></FaArrowLeft> Go back
           </button>

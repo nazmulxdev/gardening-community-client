@@ -5,6 +5,7 @@ import AuthContext from "../Context/AuthContext";
 import { successMessage } from "../Utilities/sweetAlerts";
 
 const UpdateTip = () => {
+  const baseUrl = import.meta.env.VITE_BASE_URL;
   const { id } = useParams();
   const [updateUser, setUpdateUser] = useState({});
   const [loading, setLoading] = useState(true);
@@ -12,7 +13,7 @@ const UpdateTip = () => {
   useEffect(() => {
     document.title = `GreenCircle | UpdateTip`;
     setLoading(true);
-    fetch(`https://final-gerdaning-server.vercel.app/tipsDetails/${id}`)
+    fetch(`${baseUrl}/tipsDetails/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setUpdateUser(data);
@@ -37,7 +38,7 @@ const UpdateTip = () => {
     const form = e.target;
     const formData = new FormData(form);
     const updatedTip = Object.fromEntries(formData.entries());
-    fetch(`https://final-gerdaning-server.vercel.app/tipsDetails/${id}`, {
+    fetch(`${baseUrl}/tipsDetails/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -196,7 +197,7 @@ const UpdateTip = () => {
       </div>
       <h1 className="font-bold text-center mb-8">
         Have changed mind?{" "}
-        <Link to="/myTips" className="primaryColor">
+        <Link to={-1} className="primaryColor">
           go back!
         </Link>
       </h1>
