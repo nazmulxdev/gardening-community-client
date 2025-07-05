@@ -15,6 +15,10 @@ Green Circle is a vibrant online community hub designed for gardening enthusiast
 
 The primary goal of Green Circle is to build a supportive and interactive platform where users can share their gardening knowledge, showcase their work, and learn from others. The site features a dynamic "trending tips" section, user profiles for active gardeners, and a comprehensive resource hub for all gardening needs.
 
+**ScreenShot**
+
+![Project Screenshot](https://3vyg2acdxl.ufs.sh/f/vZKcTYAMgkubgTMTwMzjC1OUfI7e2TiztGXJpZ5VhLFD3dYn)
+
 ---
 
 ### **Key Features**
