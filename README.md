@@ -5,7 +5,7 @@ Green Circle is a vibrant online community hub designed for gardening enthusiast
 <div align="center">
 
 [![Live Site](https://img.shields.io/badge/Live_Site-gardening--community.web.app-brightgreen?style=for-the-badge)](https://gardening-community-e4aad.web.app/)
-[![Live Site (Mirror)](https://img.shields.io/badge/Live_Site-firebaseapp.com-orange?style=for-the-badge)](https://gardening-community-e4aad.firebaseapp.com/)
+[![Server Repo](https://img.shields.io/badge/Server_Repo-GitHub-333?style=for-the-badge&logo=github)](https://github.com/nazmulxdev/gardening-community-server)
 
 </div>
 
@@ -54,18 +54,18 @@ The following main technologies were used in this project:
 
 The following NPM packages are used in this project:
 
-* React Router
-* Firebase
-* React Icons
-* Tailwind CSS
-* Daisy UI
-* React-spinners
-* SweetAlert2
-* React-slideshow-image
-* React-simple-typewriter
-* React-tooltip
-* Lottie-react
-* Swiper
+- React Router
+- Firebase
+- React Icons
+- Tailwind CSS
+- Daisy UI
+- React-spinners
+- SweetAlert2
+- React-slideshow-image
+- React-simple-typewriter
+- React-tooltip
+- Lottie-react
+- Swiper
 
 ---
 
@@ -74,22 +74,26 @@ The following NPM packages are used in this project:
 Follow these steps to run the project on your local machine:
 
 **1. Clone the repository:**
+
 ```bash
 git clone [https://github.com/your-username/your-repository-name.git](https://github.com/your-username/your-repository-name.git)
 ```
 
 **2. Navigate to the project directory:**
+
 ```bash
 cd your-repository-name
 ```
 
 **3. Install NPM packages:**
+
 ```bash
 npm install
 ```
 
 **4. Set up environment variables:**
 Create a file named `.env.local` in the root directory of the project and add your Firebase configuration.
+
 ```.env.local
 VITE_APIKEY=your_firebase_apikey
 VITE_AUTHDOMAIN=your_firebase_authdomain
@@ -98,17 +102,20 @@ VITE_STORAGEBUCKET=your_firebase_storagebucket
 VITE_MESSAGINGSENDERID=your_firebase_messagingsenderid
 VITE_APPID=your_firebase_appid
 ```
-*(Replace the values above with your own Firebase credentials.)*
+
+_(Replace the values above with your own Firebase credentials.)_
 
 **5. Run the project:**
+
 ```bash
 npm run dev
 ```
+
 You can now view the project by visiting `http://localhost:5173` (or any other port shown in the terminal) in your browser.
 
 ---
 
 ### **Relevant Links**
 
-* **Live Site:** https://gardening-community-e4aad.web.app/
-* **Server-Side Code:** https://final-gerdaning-server.vercel.app/
+- **Live Site:** https://gardening-community-e4aad.web.app/
+- **Live API:** https://final-gerdaning-server.vercel.app/
